@@ -24,11 +24,13 @@ export const publish=async(req,res)=>{
 
 export const explore=async(req,res)=>{
     const searchTerm=req.query.search
+    console.log(searchTerm)
 
     try {
 
-        const article=await Post.findOne({
+        const article=await Post.find({
             $text:{$search:searchTerm}})
+            // console.log(article)
             res.json(article)
         
     } catch (error) {
